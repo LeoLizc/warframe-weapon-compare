@@ -5,7 +5,7 @@ export interface WeaponAttack {
   damage: WeaponDamage;
   falloff?: WeaponFalloff;
   name: string;
-  shotSpeed?: number;
+  shotSpeed: number;
   speed: number;
   statusChance: number;
 }

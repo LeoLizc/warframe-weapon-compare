@@ -7,7 +7,7 @@ export const WEAPON_DEFAULT_ATTACKS: Omit<
   chargeTime: 0,
   critChance: 0,
   critMultiplier: 1,
-  shotSpeed: 0,
+  shotSpeed: 0.1,
   speed: 0,
   statusChance: 0,
 };

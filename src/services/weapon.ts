@@ -108,7 +108,9 @@ export function transformWeaponData(apiData: WeaponsDTO): Weapon[] {
           }
         : undefined,
       name: attack.name,
-      shotSpeed: attack.shot_speed ?? WDA.shotSpeed,
+      shotSpeed:
+        attack.shot_speed ??
+        (attack.shot_type === 'Hit-Scan' ? 100 * 10 : WDA.shotSpeed),
       speed: attack.speed ?? WDA.speed,
       statusChance: normailze(attack.status_chance ?? WDA.statusChance),
     })) || [
@@ -123,7 +125,7 @@ export function transformWeaponData(apiData: WeaponsDTO): Weapon[] {
         },
         falloff: undefined,
         name: 'Default Attack',
-        shotSpeed: undefined,
+        shotSpeed: WDA.shotSpeed,
         speed: weapon.fireRate,
         statusChance: weapon.procChance,
       },
