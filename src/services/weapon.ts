@@ -109,6 +109,7 @@ export function transformWeaponData(apiData: WeaponsDTO): Weapon[] {
         : undefined,
       name: attack.name,
       shotSpeed: attack.shot_speed ?? WDA.shotSpeed,
+      speed: attack.speed ?? WDA.speed,
       statusChance: normailze(attack.status_chance ?? WDA.statusChance),
     })) || [
       {
@@ -123,6 +124,7 @@ export function transformWeaponData(apiData: WeaponsDTO): Weapon[] {
         falloff: undefined,
         name: 'Default Attack',
         shotSpeed: undefined,
+        speed: weapon.fireRate,
         statusChance: weapon.procChance,
       },
     ];

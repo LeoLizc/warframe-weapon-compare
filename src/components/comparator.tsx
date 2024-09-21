@@ -86,6 +86,7 @@ export const Comparator = () => {
         // Toxin: attack.damage.toxin,
         // Viral: attack.damage.viral,
         critMultiplier: attack.critMultiplier,
+        speed: attack.speed,
         statusChance: attack.statusChance,
         // Slash: attack.damage.slash,
         Total: attack.total,

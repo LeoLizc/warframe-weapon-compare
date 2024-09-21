@@ -8,6 +8,7 @@ export const WEAPON_DEFAULT_ATTACKS: Omit<
   critChance: 0,
   critMultiplier: 1,
   shotSpeed: 0,
+  speed: 0,
   statusChance: 0,
 };
 

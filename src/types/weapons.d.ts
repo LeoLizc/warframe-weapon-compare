@@ -6,6 +6,7 @@ export interface WeaponAttack {
   falloff?: WeaponFalloff;
   name: string;
   shotSpeed?: number;
+  speed: number;
   statusChance: number;
 }
 
