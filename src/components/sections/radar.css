@@ -1,0 +1,13 @@
+.mantine-ChartLegend-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 12px;
+}
+
+.mantine-ChartLegend-legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

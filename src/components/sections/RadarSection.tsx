@@ -1,5 +1,6 @@
 import { invertGroup } from '../../utils/group';
 import { standardize } from '../../utils/standart';
+import './radar.css';
 import { RadarChart } from '@mantine/charts';
 import { useMemo } from 'preact/hooks';
 
@@ -51,6 +52,7 @@ export const RadarSection = ({ data = [], description, title }: Props) => {
         h={300}
         label="test Label"
         series={series}
+        withLegend
         withPolarGrid
         withPolarRadiusAxis={false}
       />
