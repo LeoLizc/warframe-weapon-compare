@@ -85,7 +85,6 @@ export const Comparator = () => {
 
   const onSelectSubmit = useCallback(
     (value: string) => {
-      console.log('value', value);
       if (selectedValues.current.has(value)) {
         onSelectRemove(value);
         return;

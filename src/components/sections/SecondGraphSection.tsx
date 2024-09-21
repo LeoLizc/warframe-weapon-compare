@@ -24,10 +24,10 @@ const initialValues: StateType[] = [
   { checked: false, key: crypto.randomUUID(), label: 'viral' },
   { checked: false, key: crypto.randomUUID(), label: 'void' },
   { checked: false, key: crypto.randomUUID(), label: 'shotSpeed' },
-  { checked: false, key: crypto.randomUUID(), label: 'total' },
+  { checked: true, key: crypto.randomUUID(), label: 'total' },
   { checked: false, key: crypto.randomUUID(), label: 'critChance' },
   { checked: false, key: crypto.randomUUID(), label: 'speed' },
-  { checked: false, key: crypto.randomUUID(), label: 'critMultiplier' },
+  { checked: true, key: crypto.randomUUID(), label: 'critMultiplier' },
   { checked: false, key: crypto.randomUUID(), label: 'statusChance' },
 ];
 
