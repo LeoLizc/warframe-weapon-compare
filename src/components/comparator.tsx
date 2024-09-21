@@ -3,6 +3,7 @@ import { useWeapons } from '../hooks/useWeapons';
 import { BentoElement } from './BentoElement';
 import { ListingSection } from './sections/ListingSection';
 import { RadarSection } from './sections/RadarSection';
+import { SecondGraphSection } from './sections/SecondGraphSection';
 import { TableSection } from './sections/TableSection';
 import { Loader, MultiSelect } from '@mantine/core';
 import {
@@ -12,45 +13,11 @@ import {
   useRef,
 } from 'preact/compat';
 
-const exampleData = [
-  {
-    color: 'red',
-    data: {
-      'category 1': 10,
-      'category 2': 20,
-      'category 3': 30,
-      'category 4': 40,
-      'category 5': 50,
-    },
-    weapon: 'weapon 1',
-  },
-  {
-    color: 'blue',
-    data: {
-      'category 1': 20,
-      'category 2': 30,
-      'category 3': 40,
-      'category 4': 43,
-      'category 5': 52,
-    },
-    weapon: 'weapon 2',
-  },
-  {
-    color: 'green',
-    data: {
-      'category 1': 30,
-      'category 2': 40,
-      'category 3': 50,
-      'category 4': 20,
-      'category 5': 30,
-    },
-    weapon: 'weapon 3',
-  },
-];
-
 const gridStyles: CSSProperties = {
   display: 'grid',
-  gridAutoRows: 'minmax(calc(calc(100dvh / 6) - 1rem), auto)',
+  // gridAutoRows: 'minmax(calc(calc(100dvh / 6) - 1rem), auto)',
+  // gridAutoRows: 'calc(calc(100dvh / 6) - 1rem)',
+  gridAutoRows: '98px',
   gridGap: '1rem',
   gridTemplateColumns: 'repeat(12, 1fr)',
 };
@@ -89,7 +56,7 @@ export const Comparator = () => {
         speed: attack.speed,
         statusChance: attack.statusChance,
         // Slash: attack.damage.slash,
-        Total: attack.total,
+        total: attack.total,
       };
 
       return { color: weapon.color, data, weapon: weapon.name };
@@ -118,6 +85,7 @@ export const Comparator = () => {
 
   const onSelectSubmit = useCallback(
     (value: string) => {
+      console.log('value', value);
       if (selectedValues.current.has(value)) {
         onSelectRemove(value);
         return;
@@ -135,33 +103,29 @@ export const Comparator = () => {
     <div style={gridStyles}>
       <BentoElement
         colSpan={12}
-        rowSpan={1}
+        rowSpan={2}
       >
-        <MultiSelect
-          data={weaponNames}
-          description="Select the weapons to compare"
-          disabled={!showSelect}
-          label="Select Weapons"
-          leftSection={!showSelect && <Loader size={18} />}
-          limit={6}
-          maxValues={6}
-          onOptionSubmit={onSelectSubmit}
-          onRemove={onSelectRemove}
-          searchable
-          size="md"
-          variant="filled"
-          // w={900}
-        />
-      </BentoElement>
-
-      <BentoElement
-        colSpan={12}
-        rowSpan={1}
-      >
-        <ListingSection
-          data={listingData}
-          onSelect={selectWeapon}
-        />
+        <div className=" h-full flex flex-col justify-between">
+          <MultiSelect
+            data={weaponNames}
+            description="Select the weapons to compare"
+            disabled={!showSelect}
+            label="Select Weapons"
+            leftSection={!showSelect && <Loader size={18} />}
+            limit={6}
+            maxValues={6}
+            onOptionSubmit={onSelectSubmit}
+            onRemove={onSelectRemove}
+            searchable
+            size="md"
+            variant="filled"
+            // w={900}
+          />
+          <ListingSection
+            data={listingData}
+            onSelect={selectWeapon}
+          />
+        </div>
       </BentoElement>
 
       <BentoElement
@@ -187,15 +151,15 @@ export const Comparator = () => {
         colSpan={6}
         rowSpan={4}
       >
-        <RadarSection
-          data={exampleData}
-          description="Compare the weapons"
-          title="Weapons Comparison"
-        />
+        {selectedWeapons.length === 0 ? (
+          '... Loading'
+        ) : (
+          <SecondGraphSection data={selectedWeapons} />
+        )}
       </BentoElement>
       <BentoElement colSpan={12}>
         {selectedWeapons.length === 0 ? (
-          '...Loading'
+          '... Loading'
         ) : (
           <TableSection data={tableData} />
         )}

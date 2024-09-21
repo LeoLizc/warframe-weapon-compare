@@ -41,7 +41,7 @@ export const RadarSection = ({ data = [], description, title }: Props) => {
   // console.log('series', series);
 
   return (
-    <div>
+    <div className="w-full flex flex-col">
       <h3>{title}</h3>
       <p>{description}</p>
       <RadarChart
