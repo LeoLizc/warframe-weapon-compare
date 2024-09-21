@@ -21,7 +21,7 @@ export const ListingSection = ({ data, onSelect }: ListingSectionProps) => {
     };
 
   return (
-    <div className="w-full h-full flex items-center gap-4">
+    <div className="w-full flex items-center gap-4">
       {data.length > 0 &&
         data.map((item) => (
           <div

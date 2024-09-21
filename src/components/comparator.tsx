@@ -105,7 +105,7 @@ export const Comparator = () => {
         colSpan={12}
         rowSpan={2}
       >
-        <div className=" h-full flex flex-col justify-between">
+        <div className=" h-full flex flex-col justify-evenly">
           <MultiSelect
             data={weaponNames}
             description="Select the weapons to compare"
