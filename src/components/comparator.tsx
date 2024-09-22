@@ -96,6 +96,11 @@ export const Comparator = () => {
     [selectedValues],
   );
 
+  const showElements = useMemo(
+    () => selectedWeapons.length > 0,
+    [selectedWeapons],
+  );
+
   // console.log(showSelect);
 
   return (
@@ -127,42 +132,34 @@ export const Comparator = () => {
         </div>
       </BentoElement>
 
-      <BentoElement
-        colSpan={6}
-        rowSpan={4}
-      >
-        {firstChartData.length === 0 ? (
-          '...loading'
-        ) : (
-          <RadarSection
-            data={firstChartData}
-            description="Compare the weapons"
-            title="Weapons Comparison"
-          />
-        )}
-      </BentoElement>
-      {/* <BentoSpace
+      {showElements && (
+        <>
+          <BentoElement
+            colSpan={6}
+            rowSpan={4}
+          >
+            <RadarSection
+              data={firstChartData}
+              description="Compare the weapons"
+              title="Weapons Comparison"
+            />
+          </BentoElement>
+          {/* <BentoSpace
         colSpan={2}
         rowSpan={4}
       /> */}
 
-      <BentoElement
-        colSpan={6}
-        rowSpan={4}
-      >
-        {selectedWeapons.length === 0 ? (
-          '... Loading'
-        ) : (
-          <SecondGraphSection data={selectedWeapons} />
-        )}
-      </BentoElement>
-      <BentoElement colSpan={12}>
-        {selectedWeapons.length === 0 ? (
-          '... Loading'
-        ) : (
-          <TableSection data={tableData} />
-        )}
-      </BentoElement>
+          <BentoElement
+            colSpan={6}
+            rowSpan={4}
+          >
+            <SecondGraphSection data={selectedWeapons} />
+          </BentoElement>
+          <BentoElement colSpan={12}>
+            <TableSection data={tableData} />
+          </BentoElement>
+        </>
+      )}
     </div>
   );
 };
