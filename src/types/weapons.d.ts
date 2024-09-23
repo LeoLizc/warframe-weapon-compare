@@ -39,7 +39,7 @@ export interface Weapon {
   isPrime: boolean;
   masteryReq: number;
   name: string;
-  noise?: string;
+  noise: string;
 }
 
 export interface WeaponModeData

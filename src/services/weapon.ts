@@ -2,6 +2,7 @@ import {
   WEAPON_DEFAULT_ATTACKS as WDA,
   WEAPON_DEFAULT_DAMAGE as WDD,
   WEAPON_DEFAULT_FALLOFF as WDF,
+  WEAPON_DEFAULTS,
 } from '../constants/weaponDefaults';
 import { type WeaponsDTO } from '../types/dto/weapons';
 import {
@@ -137,7 +138,7 @@ export function transformWeaponData(apiData: WeaponsDTO): Weapon[] {
       isPrime: weapon.isPrime,
       masteryReq: weapon.masteryReq,
       name: weapon.name,
-      noise: weapon.noise,
+      noise: weapon.noise ?? WEAPON_DEFAULTS.noise,
     };
   });
 }

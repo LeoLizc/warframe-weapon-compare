@@ -12,6 +12,10 @@ export const WEAPON_DEFAULT_ATTACKS: Omit<
   statusChance: 0,
 };
 
+export const WEAPON_DEFAULTS = {
+  noise: 'Alarming',
+};
+
 export const WEAPON_DEFAULT_DAMAGE = {
   blast: 0,
   cold: 0,
