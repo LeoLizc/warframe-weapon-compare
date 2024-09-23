@@ -1,3 +1,4 @@
+import { evaluateRanking } from '../../services/ranking';
 import { type WeaponModeData } from '../../types/weapons';
 import { invertGroup } from '../../utils/group';
 import { Table } from '@mantine/core';
@@ -34,23 +35,47 @@ export const TableSection = ({ data }: TableSectionProperties) => {
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>
-        {tableData.map((row) => (
-          <Table.Tr key={row.feat}>
-            <Table.Td>{row.feat}</Table.Td>
-            {headers.map((header) => (
-              <Table.Td key={header}>
-                {(() => {
-                  const rowData = row[header] as boolean | string | undefined;
-                  if (typeof rowData === 'boolean') {
-                    return rowData ? 'Yes' : 'No';
-                  }
+        {tableData.map((row) => {
+          const { feat, ...values } = row;
 
-                  return rowData ?? 'N/A';
-                })()}
-              </Table.Td>
-            ))}
-          </Table.Tr>
-        ))}
+          const best = evaluateRanking(Object.values(values) as string[], feat);
+          // console.log(feat, best);
+          return (
+            <Table.Tr key={feat}>
+              <Table.Td>{feat}</Table.Td>
+              {headers.map((header) => (
+                <Table.Td key={header}>
+                  {(() => {
+                    let rowData = values[header] as
+                      | boolean
+                      | string
+                      | undefined;
+
+                    rowData = rowData ?? 'N/A';
+
+                    if (rowData === best) {
+                      if (typeof rowData === 'boolean') {
+                        rowData = rowData ? 'Yes' : 'No';
+                      }
+
+                      return (
+                        <strong className="px-2 py-1 bg-green-500 text-black rounded">
+                          {rowData}
+                        </strong>
+                      );
+                    }
+
+                    if (typeof rowData === 'boolean') {
+                      rowData = rowData ? 'Yes' : 'No';
+                    }
+
+                    return rowData;
+                  })()}
+                </Table.Td>
+              ))}
+            </Table.Tr>
+          );
+        })}
       </Table.Tbody>
     </Table>
     // </Table.ScrollContainer>
