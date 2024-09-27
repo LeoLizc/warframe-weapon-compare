@@ -31,7 +31,14 @@ export const Comparator = () => {
     weaponNames,
   } = useWeapons();
 
-  const selectedValues = useRef<Map<string, boolean>>(new Map());
+  // const selectedValues = useRef<Map<string, boolean>>(new Map());
+  const selectedValues = useRef<Map<string, boolean>>(
+    // eslint-disable-next-line unicorn/no-array-reduce
+    selectedWeapons.reduce((accumulator, weapon) => {
+      accumulator.set(weapon.name, true);
+      return accumulator;
+    }, new Map()),
+  );
 
   const firstChartData = useMemo(() => {
     if (selectedWeapons.length === 0) return [];
