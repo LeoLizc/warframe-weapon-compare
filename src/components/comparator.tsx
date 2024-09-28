@@ -108,8 +108,6 @@ export const Comparator = () => {
     [selectedWeapons],
   );
 
-  // console.log(showSelect);
-
   return (
     <div style={gridStyles}>
       <BentoElement
@@ -129,6 +127,7 @@ export const Comparator = () => {
             onRemove={onSelectRemove}
             searchable
             size="md"
+            value={selectedWeapons.map((weapon) => weapon.name)}
             variant="filled"
             // w={900}
           />
