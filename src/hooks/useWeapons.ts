@@ -33,7 +33,7 @@ export const useWeapons = () => {
   const selectWeapons = async (
     weapons: Array<{ mode?: string; name: string }>,
   ) => {
-    const newSelectedWeapons = await Promise.allSettled(
+    const weaponPromises = await Promise.allSettled(
       weapons.map(async ({ mode, name }) => {
         const weaponIndex = selectedWeapons.findIndex(
           (weaponItem) => weaponItem.name === name,
@@ -56,16 +56,13 @@ export const useWeapons = () => {
       }),
     );
 
-    const newSelectedWeaponsFiltered = newSelectedWeapons
-      .filter((result) => result.status === 'fulfilled')
-      .filter((result) => result.value !== null) // TODO can omit this using reduce
-      .map((result) => result.value);
-
     updateSelectedWeapons((previous) => {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
       const newSelectedWeapons = [...previous];
       const newWeapons: typeof newSelectedWeapons = [];
-      for (const weaponData of newSelectedWeaponsFiltered) {
+      for (const result of weaponPromises) {
+        if (result.status === 'rejected') continue;
+        const weaponData = result.value;
+
         if (weaponData === null) continue;
 
         const { weapon, weaponIndex } = weaponData;
