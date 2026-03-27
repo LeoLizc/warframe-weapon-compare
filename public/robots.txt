@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wcompare.leoliz.tech/sitemap.xml
+Sitemap: https://wcompare.leolizc.tech/sitemap.xml
