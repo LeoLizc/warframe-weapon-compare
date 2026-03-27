@@ -1,0 +1,16 @@
+{
+  "name": "Warframe Weapon Compare",
+  "short_name": "WF Compare",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "description": "Compare Warframe weapons side by side with charts and detailed stats.",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

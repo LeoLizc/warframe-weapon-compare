@@ -17,7 +17,7 @@ const gridStyles: CSSProperties = {
   display: 'grid',
   // gridAutoRows: 'minmax(calc(calc(100dvh / 6) - 1rem), auto)',
   // gridAutoRows: 'calc(calc(100dvh / 6) - 1rem)',
-  gridAutoRows: '98px',
+  gridAutoRows: 'minmax(98px, auto)',
   gridGap: '1rem',
   gridTemplateColumns: 'repeat(12, 1fr)',
 };
