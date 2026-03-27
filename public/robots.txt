@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://warframe.leoliz.tech/sitemap.xml
+Sitemap: https://wcompare.leoliz.tech/sitemap.xml

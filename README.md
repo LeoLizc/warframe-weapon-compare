@@ -2,7 +2,7 @@
 
 Aplicacion web para comparar armas de Warframe con visualizaciones interactivas.
 
-Base URL de produccion: https://warframe.leoliz.tech/
+Base URL de produccion: https://wcompare.leoliz.tech/
 
 ## Caracteristicas
 
